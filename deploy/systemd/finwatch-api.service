@@ -1,0 +1,17 @@
+[Unit]
+Description=FinWatch API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/finwatch/backend
+EnvironmentFile=/opt/finwatch/backend/.env
+ExecStart=/opt/finwatch/backend/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=5
+User=finwatch
+Group=finwatch
+
+[Install]
+WantedBy=multi-user.target

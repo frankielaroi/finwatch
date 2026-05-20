@@ -1,0 +1,13 @@
+[Unit]
+Description=FinWatch model retrain job
+After=network.target
+
+[Service]
+Type=oneshot
+User=www-data
+WorkingDirectory=/srv/finwatch/backend
+Environment=PATH=/srv/finwatch/backend/venv/bin
+ExecStart=/srv/finwatch/backend/venv/bin/python -m app.ml.retrain $ASYNC_DATABASE_URL
+
+[Install]
+WantedBy=multi-user.target

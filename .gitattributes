@@ -1,0 +1,12 @@
+# Ensure consistent EOLs and treat binary model artifacts as binary
+* text=auto
+*.py linguist-language=Python
+*.md text
+*.yml text
+*.yaml text
+
+# Mark model binaries as binary
+app/ml/models/* binary
+*.pkl binary
+*.joblib binary
+*.bst binary

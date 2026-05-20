@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+SQLAlchemy>=2.0
+asyncpg
+pydantic-settings
+redis
+alembic
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+python-dotenv
+pytest
+pytest-asyncio
+prometheus_client
+apscheduler

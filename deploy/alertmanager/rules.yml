@@ -1,0 +1,29 @@
+groups:
+- name: finwatch.rules
+  rules:
+  - alert: DLQBacklogHigh
+    expr: finwatch_dlq_current_size > 50
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "DLQ backlog is high ({{ $value }})"
+      description: "The profile DLQ has more than 50 items."
+
+  - alert: WorkerFailuresHigh
+    expr: increase(finwatch_worker_run_failures_total[1h]) > 3
+    for: 10m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High rate of worker failures"
+      description: "One or more workers have failed frequently in the past hour."
+
+  - alert: ScoringFailuresHigh
+    expr: increase(finwatch_scoring_failures_total[1h]) > 5
+    for: 10m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High scoring failure rate"
+      description: "More than 5 scoring failures in the past hour."

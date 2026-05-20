@@ -1,0 +1,17 @@
+[Unit]
+Description=FinWatch Profile Worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/finwatch/backend
+EnvironmentFile=/opt/finwatch/backend/.env
+ExecStart=/opt/finwatch/backend/venv/bin/python scripts/run_profile_worker.py
+Restart=always
+RestartSec=5
+User=finwatch
+Group=finwatch
+
+[Install]
+WantedBy=multi-user.target
